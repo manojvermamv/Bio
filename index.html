@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Alex Morgan — Designer & Developer</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #0d0d0d;
+      --surface: #161616;
+      --border: #252525;
+      --accent: #c8f542;
+      --text: #f0ede6;
+      --muted: #7a7a7a;
+      --card: #141414;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 300;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* ── NOISE OVERLAY ── */
+    body::before {
+      content: '';
+      position: fixed; inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+      pointer-events: none; z-index: 100; opacity: .5;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 50;
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 1.4rem 3rem;
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+      background: rgba(13,13,13,.7);
+      animation: fadeDown .6s ease both;
+    }
+    .nav-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.2rem;
+      letter-spacing: .04em;
+    }
+    .nav-links { display: flex; gap: 2.2rem; list-style: none; }
+    .nav-links a {
+      color: var(--muted); text-decoration: none;
+      font-size: .85rem; letter-spacing: .08em; text-transform: uppercase;
+      transition: color .25s;
+    }
+    .nav-links a:hover { color: var(--accent); }
+
+    /* ── HERO ── */
+    #hero {
+      min-height: 100vh;
+      display: grid; grid-template-columns: 1fr 1fr;
+      align-items: center;
+      padding: 0 3rem;
+      gap: 4rem;
+      position: relative;
+    }
+    .hero-bg-circle {
+      position: absolute; width: 500px; height: 500px;
+      background: radial-gradient(circle, rgba(200,245,66,.07) 0%, transparent 70%);
+      border-radius: 50%; right: 5%; top: 10%; pointer-events: none;
+    }
+    .hero-text { animation: fadeUp .8s .2s ease both; }
+    .hero-tag {
+      display: inline-flex; align-items: center; gap: .5rem;
+      background: rgba(200,245,66,.08); border: 1px solid rgba(200,245,66,.2);
+      color: var(--accent); font-size: .78rem; letter-spacing: .12em;
+      text-transform: uppercase; padding: .35rem .9rem; border-radius: 2rem;
+      margin-bottom: 1.8rem;
+    }
+    .hero-tag span { width: 6px; height: 6px; background: var(--accent); border-radius: 50%; display: inline-block; animation: pulse 2s infinite; }
+    .hero-name {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(3rem, 6vw, 5.5rem);
+      line-height: 1.05;
+      margin-bottom: 1.4rem;
+    }
+    .hero-name em { font-style: italic; color: var(--accent); }
+    .hero-desc {
+      color: var(--muted); font-size: 1.05rem;
+      max-width: 460px; margin-bottom: 2.5rem; line-height: 1.8;
+    }
+    .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
+    .btn {
+      display: inline-flex; align-items: center; gap: .5rem;
+      padding: .8rem 2rem; border-radius: .3rem;
+      font-size: .9rem; font-weight: 500; text-decoration: none;
+      transition: all .25s; cursor: pointer; border: none;
+    }
+    .btn-primary {
+      background: var(--accent); color: #0d0d0d;
+    }
+    .btn-primary:hover { background: #d8ff55; transform: translateY(-2px); box-shadow: 0 8px 24px rgba(200,245,66,.25); }
+    .btn-outline {
+      background: transparent; color: var(--text);
+      border: 1px solid var(--border);
+    }
+    .btn-outline:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-2px); }
+
+    .hero-image { animation: fadeUp .8s .4s ease both; display: flex; justify-content: center; }
+    .avatar-wrap {
+      position: relative; width: 360px; height: 420px;
+    }
+    .avatar-frame {
+      width: 100%; height: 100%;
+      background: linear-gradient(135deg, #1e1e1e 0%, #111 100%);
+      border-radius: 1.5rem 1.5rem 8rem 1.5rem;
+      border: 1px solid var(--border);
+      overflow: hidden; position: relative;
+    }
+    /* Placeholder avatar illustration */
+    .avatar-frame svg { width: 100%; height: 100%; }
+    .avatar-badge {
+      position: absolute; bottom: -1rem; left: -1.5rem;
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: .8rem; padding: .9rem 1.2rem;
+      display: flex; align-items: center; gap: .8rem;
+      font-size: .82rem;
+    }
+    .badge-icon { font-size: 1.4rem; }
+    .badge-label { color: var(--muted); font-size: .72rem; display: block; }
+    .badge-val { font-weight: 500; }
+    .avatar-badge2 {
+      position: absolute; top: 1.5rem; right: -2rem;
+      background: var(--accent); color: #0d0d0d;
+      border-radius: .8rem; padding: .8rem 1.1rem;
+      font-size: .82rem; font-weight: 500;
+    }
+    .avatar-badge2 span { display: block; font-size: .7rem; font-weight: 400; opacity: .7; }
+
+    .hero-stats {
+      display: flex; gap: 2.5rem; margin-top: 2.5rem;
+    }
+    .stat { }
+    .stat-num { font-family: 'Playfair Display', serif; font-size: 2rem; color: var(--accent); }
+    .stat-label { font-size: .78rem; color: var(--muted); letter-spacing: .06em; text-transform: uppercase; }
+
+    /* ── SECTION SHARED ── */
+    section { padding: 6rem 3rem; }
+    .section-tag {
+      font-size: .78rem; letter-spacing: .14em; text-transform: uppercase;
+      color: var(--accent); margin-bottom: .8rem; display: block;
+    }
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 4vw, 3rem); margin-bottom: 1rem; line-height: 1.15;
+    }
+    .section-sub { color: var(--muted); max-width: 540px; font-size: 1rem; margin-bottom: 3.5rem; line-height: 1.8; }
+    hr.divider { border: none; border-top: 1px solid var(--border); margin: 0; }
+
+    /* ── SKILLS ── */
+    #skills { background: var(--surface); }
+    .skills-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 1.2rem; }
+    .skill-card {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 1rem; padding: 1.5rem 1.6rem;
+      transition: border-color .25s, transform .25s;
+    }
+    .skill-card:hover { border-color: rgba(200,245,66,.35); transform: translateY(-3px); }
+    .skill-icon { font-size: 1.8rem; margin-bottom: .8rem; }
+    .skill-name { font-weight: 500; margin-bottom: .4rem; }
+    .skill-desc { font-size: .85rem; color: var(--muted); line-height: 1.7; }
+    .skill-bar { height: 3px; background: var(--border); border-radius: 2px; margin-top: 1rem; }
+    .skill-bar-fill { height: 100%; background: var(--accent); border-radius: 2px; }
+
+    /* ── PROJECTS ── */
+    #projects {}
+    .projects-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 1.5rem; }
+    .project-card {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: 1.2rem; overflow: hidden;
+      transition: border-color .25s, transform .3s;
+    }
+    .project-card:hover { border-color: rgba(200,245,66,.3); transform: translateY(-4px); }
+    .project-thumb {
+      height: 200px; position: relative; overflow: hidden;
+    }
+    .project-thumb svg { width: 100%; height: 100%; }
+    .project-tag {
+      position: absolute; top: 1rem; left: 1rem;
+      background: rgba(13,13,13,.8); backdrop-filter: blur(8px);
+      color: var(--accent); font-size: .72rem; letter-spacing: .1em;
+      text-transform: uppercase; padding: .3rem .75rem; border-radius: 2rem;
+      border: 1px solid rgba(200,245,66,.2);
+    }
+    .project-body { padding: 1.5rem; }
+    .project-title { font-weight: 500; font-size: 1.05rem; margin-bottom: .5rem; }
+    .project-desc { font-size: .87rem; color: var(--muted); line-height: 1.7; margin-bottom: 1.2rem; }
+    .project-links { display: flex; gap: .8rem; }
+    .project-link {
+      font-size: .8rem; color: var(--muted); text-decoration: none;
+      display: flex; align-items: center; gap: .3rem;
+      transition: color .2s;
+    }
+    .project-link:hover { color: var(--accent); }
+
+    /* ── EXPERIENCE ── */
+    #experience { background: var(--surface); }
+    .timeline { position: relative; padding-left: 2rem; }
+    .timeline::before {
+      content: ''; position: absolute; left: 0; top: .5rem; bottom: .5rem;
+      width: 1px; background: var(--border);
+    }
+    .timeline-item { position: relative; margin-bottom: 3rem; }
+    .timeline-item::before {
+      content: ''; position: absolute; left: -2.35rem; top: .45rem;
+      width: 10px; height: 10px; background: var(--accent); border-radius: 50%;
+      box-shadow: 0 0 0 3px rgba(200,245,66,.15);
+    }
+    .tl-period { font-size: .75rem; color: var(--accent); letter-spacing: .1em; text-transform: uppercase; margin-bottom: .4rem; }
+    .tl-role { font-weight: 500; font-size: 1.05rem; margin-bottom: .25rem; }
+    .tl-company { color: var(--muted); font-size: .9rem; margin-bottom: .7rem; }
+    .tl-desc { font-size: .88rem; color: var(--muted); line-height: 1.8; max-width: 560px; }
+
+    /* ── CONTACT ── */
+    #contact { text-align: center; }
+    .contact-links { display: flex; justify-content: center; gap: 1.2rem; flex-wrap: wrap; margin-top: 2rem; }
+    .contact-pill {
+      display: inline-flex; align-items: center; gap: .6rem;
+      background: var(--surface); border: 1px solid var(--border);
+      color: var(--text); text-decoration: none;
+      padding: .75rem 1.5rem; border-radius: 3rem; font-size: .9rem;
+      transition: all .25s;
+    }
+    .contact-pill:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-2px); }
+    .contact-icon { font-size: 1.1rem; }
+
+    /* ── FOOTER ── */
+    footer {
+      text-align: center; padding: 2rem;
+      border-top: 1px solid var(--border);
+      color: var(--muted); font-size: .82rem;
+    }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeDown {
+      from { opacity: 0; transform: translateY(-20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; } 50% { opacity: .4; }
+    }
+
+    /* ── SCROLL REVEAL ── */
+    .reveal { opacity: 0; transform: translateY(28px); transition: opacity .65s ease, transform .65s ease; }
+    .reveal.visible { opacity: 1; transform: none; }
+
+    @media (max-width: 768px) {
+      nav { padding: 1rem 1.5rem; }
+      .nav-links { display: none; }
+      #hero { grid-template-columns: 1fr; padding: 6rem 1.5rem 3rem; text-align: center; }
+      .hero-image { display: none; }
+      .hero-desc { max-width: 100%; }
+      .hero-actions { justify-content: center; }
+      .hero-stats { justify-content: center; }
+      section { padding: 4rem 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">Alex Morgan</div>
+  <ul class="nav-links">
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="#contact" class="btn btn-primary" style="padding:.6rem 1.4rem;font-size:.83rem;">Hire Me</a>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg-circle"></div>
+  <div class="hero-text">
+    <div class="hero-tag"><span></span> Available for Freelance</div>
+    <h1 class="hero-name">Product <em>Designer</em> &amp; Developer</h1>
+    <p class="hero-desc">Hi, I'm Alex. I craft delightful digital experiences at the intersection of design and code — turning complex ideas into clean, usable products.</p>
+    <div class="hero-actions">
+      <a href="#projects" class="btn btn-primary">View My Work ↓</a>
+      <a href="#contact" class="btn btn-outline">Get In Touch</a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat"><div class="stat-num">6+</div><div class="stat-label">Years Exp.</div></div>
+      <div class="stat"><div class="stat-num">42</div><div class="stat-label">Projects Done</div></div>
+      <div class="stat"><div class="stat-num">18</div><div class="stat-label">Happy Clients</div></div>
+    </div>
+  </div>
+  <div class="hero-image">
+    <div class="avatar-wrap">
+      <!-- Illustrative placeholder avatar -->
+      <div class="avatar-frame">
+        <svg viewBox="0 0 360 420" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect width="360" height="420" fill="#161616"/>
+          <!-- bg gradient -->
+          <radialGradient id="ag" cx="50%" cy="40%" r="50%">
+            <stop offset="0%" stop-color="#c8f542" stop-opacity="0.08"/>
+            <stop offset="100%" stop-color="#161616" stop-opacity="0"/>
+          </radialGradient>
+          <rect width="360" height="420" fill="url(#ag)"/>
+          <!-- body -->
+          <ellipse cx="180" cy="360" rx="100" ry="60" fill="#1d1d1d"/>
+          <!-- neck -->
+          <rect x="157" y="255" width="46" height="70" rx="8" fill="#c4a882"/>
+          <!-- head -->
+          <ellipse cx="180" cy="230" rx="68" ry="80" fill="#c4a882"/>
+          <!-- hair -->
+          <ellipse cx="180" cy="160" rx="70" ry="50" fill="#3a2a1a"/>
+          <rect x="110" y="150" width="30" height="90" rx="15" fill="#3a2a1a"/>
+          <rect x="220" y="150" width="30" height="90" rx="15" fill="#3a2a1a"/>
+          <!-- eyes -->
+          <ellipse cx="157" cy="230" rx="10" ry="11" fill="white"/>
+          <ellipse cx="203" cy="230" rx="10" ry="11" fill="white"/>
+          <circle cx="159" cy="232" r="6" fill="#2a1a0a"/>
+          <circle cx="205" cy="232" r="6" fill="#2a1a0a"/>
+          <circle cx="161" cy="230" r="2" fill="white"/>
+          <circle cx="207" cy="230" r="2" fill="white"/>
+          <!-- smile -->
+          <path d="M163 258 Q180 272 197 258" stroke="#8a5a3a" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+          <!-- shirt -->
+          <path d="M90 340 Q80 310 100 295 L130 325 L180 310 L230 325 L260 295 Q280 310 270 340 Z" fill="#c8f542"/>
+          <!-- collar -->
+          <path d="M155 295 L180 320 L205 295" stroke="#0d0d0d" stroke-width="2" fill="none"/>
+        </svg>
+      </div>
+      <div class="avatar-badge">
+        <span class="badge-icon">⭐</span>
+        <div>
+          <span class="badge-label">Client Rating</span>
+          <span class="badge-val">4.9 / 5.0</span>
+        </div>
+      </div>
+      <div class="avatar-badge2">
+        Remote Ready<span>Worldwide</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider"/>
+
+<!-- SKILLS -->
+<section id="skills">
+  <span class="section-tag reveal">What I Do</span>
+  <h2 class="section-title reveal">Skills &amp; Expertise</h2>
+  <p class="section-sub reveal">A blend of creative design thinking and engineering precision, built over 6 years of hands-on work.</p>
+  <div class="skills-grid">
+    <div class="skill-card reveal">
+      <div class="skill-icon">🎨</div>
+      <div class="skill-name">UI / UX Design</div>
+      <div class="skill-desc">Figma-first design process with deep focus on usability, visual hierarchy, and delight.</div>
+      <div class="skill-bar"><div class="skill-bar-fill" style="width:92%"></div></div>
+    </div>
+    <div class="skill-card reveal">
+      <div class="skill-icon">⚛️</div>
+      <div class="skill-name">React & Next.js</div>
+      <div class="skill-desc">Building fast, accessible, production-ready applications with modern React patterns.</div>
+      <div class="skill-bar"><div class="skill-bar-fill" style="width:88%"></div></div>
+    </div>
+    <div class="skill-card reveal">
+      <div class="skill-icon">🔧</div>
+      <div class="skill-name">Node.js & APIs</div>
+      <div class="skill-desc">REST and GraphQL APIs, serverless functions, and database architecture.</div>
+      <div class="skill-bar"><div class="skill-bar-fill" style="width:80%"></div></div>
+    </div>
+    <div class="skill-card reveal">
+      <div class="skill-icon">📱</div>
+      <div class="skill-name">Responsive Design</div>
+      <div class="skill-desc">Pixel-perfect interfaces that feel native on every device and screen size.</div>
+      <div class="skill-bar"><div class="skill-bar-fill" style="width:95%"></div></div>
+    </div>
+    <div class="skill-card reveal">
+      <div class="skill-icon">🚀</div>
+      <div class="skill-name">Performance & SEO</div>
+      <div class="skill-desc">Core Web Vitals optimisation, lighthouse audits, and search-ready markup.</div>
+      <div class="skill-bar"><div class="skill-bar-fill" style="width:78%"></div></div>
+    </div>
+    <div class="skill-card reveal">
+      <div class="skill-icon">🤝</div>
+      <div class="skill-name">Design Systems</div>
+      <div class="skill-desc">Token-based systems, component libraries, and cross-team documentation.</div>
+      <div class="skill-bar"><div class="skill-bar-fill" style="width:85%"></div></div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider"/>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <span class="section-tag reveal">Portfolio</span>
+  <h2 class="section-title reveal">Selected Projects</h2>
+  <p class="section-sub reveal">A handful of things I've shipped that I'm proud of.</p>
+  <div class="projects-grid">
+
+    <!-- Project 1 -->
+    <div class="project-card reveal">
+      <div class="project-thumb">
+        <svg viewBox="0 0 320 200" xmlns="http://www.w3.org/2000/svg">
+          <rect width="320" height="200" fill="#0f1f0f"/>
+          <circle cx="70" cy="80" r="55" fill="rgba(200,245,66,.08)" stroke="rgba(200,245,66,.15)" stroke-width="1"/>
+          <rect x="100" y="50" width="180" height="12" rx="3" fill="#1e2e1e"/>
+          <rect x="100" y="72" width="130" height="10" rx="3" fill="#1a2a1a"/>
+          <rect x="100" y="92" width="155" height="10" rx="3" fill="#1a2a1a"/>
+          <rect x="40" y="130" width="240" height="42" rx="8" fill="#162016"/>
+          <rect x="55" y="143" width="60" height="6" rx="2" fill="rgba(200,245,66,.4)"/>
+          <rect x="55" y="156" width="40" height="5" rx="2" fill="#2a3a2a"/>
+          <rect x="210" y="143" width="55" height="18" rx="4" fill="rgba(200,245,66,.15)" stroke="rgba(200,245,66,.25)" stroke-width="1"/>
+        </svg>
+        <span class="project-tag">SaaS</span>
+      </div>
+      <div class="project-body">
+        <div class="project-title">Verdant Analytics Dashboard</div>
+        <div class="project-desc">Real-time data viz platform for sustainability teams. Built with React, D3.js, and a Node/Postgres backend.</div>
+        <div class="project-links">
+          <a href="#" class="project-link">🔗 Live Demo</a>
+          <a href="#" class="project-link">⭐ GitHub</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Project 2 -->
+    <div class="project-card reveal">
+      <div class="project-thumb">
+        <svg viewBox="0 0 320 200" xmlns="http://www.w3.org/2000/svg">
+          <rect width="320" height="200" fill="#1a0f1a"/>
+          <rect x="20" y="20" width="130" height="160" rx="10" fill="#220f22" stroke="#2e1a2e" stroke-width="1"/>
+          <rect x="170" y="20" width="130" height="75" rx="10" fill="#220f22" stroke="#2e1a2e" stroke-width="1"/>
+          <rect x="170" y="105" width="130" height="75" rx="10" fill="#220f22" stroke="#2e1a2e" stroke-width="1"/>
+          <circle cx="85" cy="80" r="28" fill="rgba(200,100,255,.08)" stroke="rgba(200,100,255,.2)" stroke-width="1.5"/>
+          <rect x="50" y="120" width="70" height="7" rx="2" fill="#3a1a3a"/>
+          <rect x="60" y="134" width="50" height="5" rx="2" fill="#2e1a2e"/>
+          <rect x="185" y="40" width="90" height="7" rx="2" fill="#3a1a3a"/>
+          <rect x="185" y="55" width="70" height="5" rx="2" fill="#2e1a2e"/>
+          <rect x="185" y="125" width="55" height="7" rx="2" fill="#3a1a3a"/>
+          <rect x="185" y="140" width="75" height="5" rx="2" fill="#2e1a2e"/>
+        </svg>
+        <span class="project-tag">Mobile App</span>
+      </div>
+      <div class="project-body">
+        <div class="project-title">Lumia — Mood Journal</div>
+        <div class="project-desc">Mental wellness app with AI-powered insights. Designed the full UI system and shipped on React Native.</div>
+        <div class="project-links">
+          <a href="#" class="project-link">🔗 Case Study</a>
+          <a href="#" class="project-link">⭐ App Store</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Project 3 -->
+    <div class="project-card reveal">
+      <div class="project-thumb">
+        <svg viewBox="0 0 320 200" xmlns="http://www.w3.org/2000/svg">
+          <rect width="320" height="200" fill="#0d1a1f"/>
+          <rect x="20" y="20" width="280" height="40" rx="8" fill="#111e24" stroke="#1a2d35" stroke-width="1"/>
+          <circle cx="40" cy="40" r="8" fill="#c8f542" opacity=".7"/>
+          <rect x="58" y="34" width="80" height="6" rx="2" fill="#1a2d35"/>
+          <rect x="250" y="33" width="35" height="14" rx="4" fill="rgba(200,245,66,.15)" stroke="rgba(200,245,66,.25)" stroke-width="1"/>
+          <rect x="20" y="76" width="132" height="104" rx="8" fill="#111e24" stroke="#1a2d35" stroke-width="1"/>
+          <rect x="162" y="76" width="138" height="48" rx="8" fill="#111e24" stroke="#1a2d35" stroke-width="1"/>
+          <rect x="162" y="132" width="138" height="48" rx="8" fill="#111e24" stroke="#1a2d35" stroke-width="1"/>
+          <rect x="35" y="92" width="100" height="6" rx="2" fill="#1e3040"/>
+          <rect x="35" y="106" width="80" height="5" rx="2" fill="#162030"/>
+          <rect x="35" y="118" width="90" height="5" rx="2" fill="#162030"/>
+        </svg>
+        <span class="project-tag">Web App</span>
+      </div>
+      <div class="project-body">
+        <div class="project-title">Navix — Travel Planner</div>
+        <div class="project-desc">Collaborative itinerary builder with map integration. Led UX research and front-end architecture.</div>
+        <div class="project-links">
+          <a href="#" class="project-link">🔗 Live Site</a>
+          <a href="#" class="project-link">⭐ GitHub</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<hr class="divider"/>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <span class="section-tag reveal">Journey</span>
+  <h2 class="section-title reveal">Work Experience</h2>
+  <p class="section-sub reveal">The roles that shaped how I think about craft and collaboration.</p>
+  <div class="timeline">
+    <div class="timeline-item reveal">
+      <div class="tl-period">2022 — Present</div>
+      <div class="tl-role">Senior Product Designer</div>
+      <div class="tl-company">Stripe — Remote</div>
+      <div class="tl-desc">Leading design for the Stripe Dashboard's developer tools surface. Drove a redesign that reduced task completion time by 34%.</div>
+    </div>
+    <div class="timeline-item reveal">
+      <div class="tl-period">2020 — 2022</div>
+      <div class="tl-role">UI Engineer</div>
+      <div class="tl-company">Figma — San Francisco, CA</div>
+      <div class="tl-desc">Built core UI components for the design system team and contributed to the multiplayer cursor feature used by millions.</div>
+    </div>
+    <div class="timeline-item reveal">
+      <div class="tl-period">2018 — 2020</div>
+      <div class="tl-role">Frontend Developer</div>
+      <div class="tl-company">Freelance</div>
+      <div class="tl-desc">Delivered 20+ projects for startups and agencies across fintech, health, and e-commerce verticals.</div>
+    </div>
+    <div class="timeline-item reveal">
+      <div class="tl-period">2014 — 2018</div>
+      <div class="tl-role">BSc Computer Science</div>
+      <div class="tl-company">University of Toronto</div>
+      <div class="tl-desc">Graduated with honours. Specialised in HCI and visual computing. Founded the university's design club.</div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider"/>
+
+<!-- CONTACT -->
+<section id="contact">
+  <span class="section-tag reveal">Say Hello</span>
+  <h2 class="section-title reveal">Let's Work Together</h2>
+  <p class="section-sub reveal" style="margin:0 auto 0; text-align:center;">Whether you have a project in mind, want to chat about design, or just want to say hi — my inbox is always open.</p>
+  <div class="contact-links reveal">
+    <a href="mailto:alex@example.com" class="contact-pill"><span class="contact-icon">✉️</span> alex@example.com</a>
+    <a href="#" class="contact-pill"><span class="contact-icon">💼</span> LinkedIn</a>
+    <a href="#" class="contact-pill"><span class="contact-icon">🐙</span> GitHub</a>
+    <a href="#" class="contact-pill"><span class="contact-icon">🐦</span> Twitter / X</a>
+    <a href="#" class="contact-pill"><span class="contact-icon">📄</span> Download CV</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>Designed &amp; built by Alex Morgan · 2024 · All rights reserved.</p>
+</footer>
+
+<script>
+  // Scroll reveal
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); }
+    });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+</script>
+</body>
+</html>
