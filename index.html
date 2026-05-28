@@ -1,567 +1,1540 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Alex Morgan — Designer & Developer</title>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
-  <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trilok Garments | Quality Fabrics & Clothing – Since 1987</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Yatra+One&family=Hind:wght@300;400;500;600;700&family=Lora:ital,wght@0,400;0,600;1,400;1,600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
-    :root {
-      --bg: #0d0d0d;
-      --surface: #161616;
-      --border: #252525;
-      --accent: #c8f542;
-      --text: #f0ede6;
-      --muted: #7a7a7a;
-      --card: #141414;
-    }
+    <style>
+        :root {
+            --saffron: #D4470A;
+            --saffron-light: #F25C1A;
+            --navy: #1A3A6B;
+            --navy-dark: #0F2449;
+            --green: #166534;
+            --cream: #FAF5ED;
+            --gold: #B8870C;
+            --text-dark: #1C1C1C;
+            --text-muted: #6B6B6B;
+            --border: #E2D5C3;
+            --white: #FFFFFF;
+        }
 
-    html { scroll-behavior: smooth; }
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
-    body {
-      background: var(--bg);
-      color: var(--text);
-      font-family: 'DM Sans', sans-serif;
-      font-weight: 300;
-      line-height: 1.6;
-      overflow-x: hidden;
-    }
+        body {
+            font-family: 'Hind', sans-serif;
+            background: var(--cream);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
 
-    /* ── NOISE OVERLAY ── */
-    body::before {
-      content: '';
-      position: fixed; inset: 0;
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
-      pointer-events: none; z-index: 100; opacity: .5;
-    }
+        /* ========= TOPBAR ========= */
+        .topbar {
+            background: var(--navy-dark);
+            color: #94A3B8;
+            font-size: 0.77rem;
+            padding: 7px 0;
+        }
+        .topbar-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 6px;
+        }
+        .topbar-left { display: flex; align-items: center; gap: 6px; }
+        .topbar-left span { color: #64748B; }
+        .topbar-right { display: flex; gap: 20px; }
+        .topbar a { color: #94A3B8; text-decoration: none; display: flex; align-items: center; gap: 5px; }
+        .topbar a:hover { color: #FCA882; }
 
-    /* ── NAV ── */
-    nav {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 50;
-      display: flex; justify-content: space-between; align-items: center;
-      padding: 1.4rem 3rem;
-      backdrop-filter: blur(20px);
-      border-bottom: 1px solid var(--border);
-      background: rgba(13,13,13,.7);
-      animation: fadeDown .6s ease both;
-    }
-    .nav-logo {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.2rem;
-      letter-spacing: .04em;
-    }
-    .nav-links { display: flex; gap: 2.2rem; list-style: none; }
-    .nav-links a {
-      color: var(--muted); text-decoration: none;
-      font-size: .85rem; letter-spacing: .08em; text-transform: uppercase;
-      transition: color .25s;
-    }
-    .nav-links a:hover { color: var(--accent); }
+        /* ========= HEADER ========= */
+        header {
+            background: var(--white);
+            position: sticky;
+            top: 0;
+            z-index: 999;
+            box-shadow: 0 2px 14px rgba(0,0,0,0.07);
+        }
+        .header-main {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 13px 24px;
+            display: grid;
+            grid-template-columns: auto 1fr auto;
+            align-items: center;
+            gap: 28px;
+        }
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 11px;
+            text-decoration: none;
+            flex-shrink: 0;
+        }
+        .logo-emblem {
+            width: 46px;
+            height: 46px;
+            background: linear-gradient(135deg, var(--saffron), #E8700A);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-family: 'Yatra One', cursive;
+            font-size: 1.3rem;
+            flex-shrink: 0;
+            box-shadow: 0 3px 10px rgba(212,71,10,0.3);
+        }
+        .logo-text h1 {
+            font-family: 'Yatra One', cursive;
+            font-size: 1.4rem;
+            color: var(--navy);
+            line-height: 1.1;
+        }
+        .logo-text p {
+            font-size: 0.68rem;
+            color: var(--text-muted);
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+        }
+        .search-wrap {
+            display: flex;
+            background: #F3EDE5;
+            border: 1.5px solid var(--border);
+            border-radius: 6px;
+            overflow: hidden;
+            transition: border-color 0.2s;
+        }
+        .search-wrap:focus-within { border-color: var(--saffron); }
+        .search-wrap input {
+            flex: 1;
+            border: none;
+            background: transparent;
+            padding: 10px 15px;
+            font-family: 'Hind', sans-serif;
+            font-size: 0.88rem;
+            outline: none;
+            color: var(--text-dark);
+        }
+        .search-wrap input::placeholder { color: #9B8E80; }
+        .search-wrap button {
+            background: var(--saffron);
+            border: none;
+            color: white;
+            padding: 10px 18px;
+            cursor: pointer;
+            font-size: 0.88rem;
+            transition: background 0.2s;
+        }
+        .search-wrap button:hover { background: var(--saffron-light); }
+        .header-actions { display: flex; align-items: center; gap: 18px; }
+        .hbtn {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 3px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-family: 'Hind', sans-serif;
+            font-size: 0.67rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: var(--text-muted);
+        }
+        .hbtn i { font-size: 1.15rem; color: var(--navy); }
+        .cart-wrap { position: relative; }
+        .cart-badge {
+            position: absolute;
+            top: -6px;
+            right: -7px;
+            background: var(--saffron);
+            color: white;
+            border-radius: 50%;
+            width: 16px;
+            height: 16px;
+            font-size: 0.6rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+        }
 
-    /* ── HERO ── */
-    #hero {
-      min-height: 100vh;
-      display: grid; grid-template-columns: 1fr 1fr;
-      align-items: center;
-      padding: 0 3rem;
-      gap: 4rem;
-      position: relative;
-    }
-    .hero-bg-circle {
-      position: absolute; width: 500px; height: 500px;
-      background: radial-gradient(circle, rgba(200,245,66,.07) 0%, transparent 70%);
-      border-radius: 50%; right: 5%; top: 10%; pointer-events: none;
-    }
-    .hero-text { animation: fadeUp .8s .2s ease both; }
-    .hero-tag {
-      display: inline-flex; align-items: center; gap: .5rem;
-      background: rgba(200,245,66,.08); border: 1px solid rgba(200,245,66,.2);
-      color: var(--accent); font-size: .78rem; letter-spacing: .12em;
-      text-transform: uppercase; padding: .35rem .9rem; border-radius: 2rem;
-      margin-bottom: 1.8rem;
-    }
-    .hero-tag span { width: 6px; height: 6px; background: var(--accent); border-radius: 50%; display: inline-block; animation: pulse 2s infinite; }
-    .hero-name {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(3rem, 6vw, 5.5rem);
-      line-height: 1.05;
-      margin-bottom: 1.4rem;
-    }
-    .hero-name em { font-style: italic; color: var(--accent); }
-    .hero-desc {
-      color: var(--muted); font-size: 1.05rem;
-      max-width: 460px; margin-bottom: 2.5rem; line-height: 1.8;
-    }
-    .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
-    .btn {
-      display: inline-flex; align-items: center; gap: .5rem;
-      padding: .8rem 2rem; border-radius: .3rem;
-      font-size: .9rem; font-weight: 500; text-decoration: none;
-      transition: all .25s; cursor: pointer; border: none;
-    }
-    .btn-primary {
-      background: var(--accent); color: #0d0d0d;
-    }
-    .btn-primary:hover { background: #d8ff55; transform: translateY(-2px); box-shadow: 0 8px 24px rgba(200,245,66,.25); }
-    .btn-outline {
-      background: transparent; color: var(--text);
-      border: 1px solid var(--border);
-    }
-    .btn-outline:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-2px); }
+        /* ========= TRICOLOR BAR ========= */
+        .tricolor {
+            display: flex;
+            height: 4px;
+        }
+        .tricolor div:nth-child(1) { background: var(--saffron); flex: 1; }
+        .tricolor div:nth-child(2) { background: #FFF; flex: 1; border-top: 0.5px solid #ddd; border-bottom: 0.5px solid #ddd; }
+        .tricolor div:nth-child(3) { background: var(--green); flex: 1; }
 
-    .hero-image { animation: fadeUp .8s .4s ease both; display: flex; justify-content: center; }
-    .avatar-wrap {
-      position: relative; width: 360px; height: 420px;
-    }
-    .avatar-frame {
-      width: 100%; height: 100%;
-      background: linear-gradient(135deg, #1e1e1e 0%, #111 100%);
-      border-radius: 1.5rem 1.5rem 8rem 1.5rem;
-      border: 1px solid var(--border);
-      overflow: hidden; position: relative;
-    }
-    /* Placeholder avatar illustration */
-    .avatar-frame svg { width: 100%; height: 100%; }
-    .avatar-badge {
-      position: absolute; bottom: -1rem; left: -1.5rem;
-      background: var(--surface); border: 1px solid var(--border);
-      border-radius: .8rem; padding: .9rem 1.2rem;
-      display: flex; align-items: center; gap: .8rem;
-      font-size: .82rem;
-    }
-    .badge-icon { font-size: 1.4rem; }
-    .badge-label { color: var(--muted); font-size: .72rem; display: block; }
-    .badge-val { font-weight: 500; }
-    .avatar-badge2 {
-      position: absolute; top: 1.5rem; right: -2rem;
-      background: var(--accent); color: #0d0d0d;
-      border-radius: .8rem; padding: .8rem 1.1rem;
-      font-size: .82rem; font-weight: 500;
-    }
-    .avatar-badge2 span { display: block; font-size: .7rem; font-weight: 400; opacity: .7; }
+        /* ========= NAV ========= */
+        .main-nav { background: var(--navy); }
+        .main-nav ul {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+            list-style: none;
+            display: flex;
+            overflow-x: auto;
+            scrollbar-width: none;
+        }
+        .main-nav ul::-webkit-scrollbar { display: none; }
+        .main-nav ul li a {
+            display: block;
+            color: #94A3B8;
+            text-decoration: none;
+            padding: 11px 16px;
+            font-size: 0.86rem;
+            font-weight: 500;
+            white-space: nowrap;
+            transition: all 0.2s;
+            position: relative;
+        }
+        .main-nav ul li a:hover,
+        .main-nav ul li a.active { color: white; background: rgba(255,255,255,0.07); }
+        .main-nav ul li a.active::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: var(--saffron);
+        }
+        .main-nav ul li.hot a { color: #FBBF24; font-weight: 600; }
 
-    .hero-stats {
-      display: flex; gap: 2.5rem; margin-top: 2.5rem;
-    }
-    .stat { }
-    .stat-num { font-family: 'Playfair Display', serif; font-size: 2rem; color: var(--accent); }
-    .stat-label { font-size: .78rem; color: var(--muted); letter-spacing: .06em; text-transform: uppercase; }
+        /* ========= MARQUEE ========= */
+        .announcement {
+            background: #FEF3C7;
+            border-bottom: 1px solid #F0D080;
+            padding: 7px 0;
+            overflow: hidden;
+        }
+        .marquee-track {
+            display: flex;
+            animation: marquee-go 36s linear infinite;
+            white-space: nowrap;
+        }
+        .marquee-track span {
+            font-size: 0.8rem;
+            color: #78350F;
+            font-weight: 500;
+            padding: 0 36px;
+        }
+        .marquee-track span::before { content: '◆ '; color: var(--saffron); }
+        @keyframes marquee-go {
+            0%   { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
 
-    /* ── SECTION SHARED ── */
-    section { padding: 6rem 3rem; }
-    .section-tag {
-      font-size: .78rem; letter-spacing: .14em; text-transform: uppercase;
-      color: var(--accent); margin-bottom: .8rem; display: block;
-    }
-    .section-title {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(2rem, 4vw, 3rem); margin-bottom: 1rem; line-height: 1.15;
-    }
-    .section-sub { color: var(--muted); max-width: 540px; font-size: 1rem; margin-bottom: 3.5rem; line-height: 1.8; }
-    hr.divider { border: none; border-top: 1px solid var(--border); margin: 0; }
+        /* ========= HERO ========= */
+        .hero {
+            background: linear-gradient(135deg, #0C1D3A 0%, #152E5B 50%, #271848 100%);
+            min-height: 510px;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image:
+                radial-gradient(circle at 15% 60%, rgba(212,71,10,0.18) 0%, transparent 55%),
+                radial-gradient(circle at 85% 20%, rgba(22,101,52,0.12) 0%, transparent 45%);
+        }
+        /* Geometric mandala-ish decoration on right */
+        .hero-deco {
+            position: absolute;
+            right: -80px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 480px;
+            height: 480px;
+            opacity: 0.07;
+            pointer-events: none;
+        }
+        .hero-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 60px 24px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+            position: relative;
+            z-index: 2;
+        }
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+            background: rgba(212,71,10,0.18);
+            border: 1px solid rgba(212,71,10,0.38);
+            border-radius: 20px;
+            padding: 5px 14px;
+            font-size: 0.73rem;
+            color: #FCA882;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 18px;
+        }
+        .hero h2 {
+            font-family: 'Yatra One', cursive;
+            font-size: 2.9rem;
+            color: white;
+            line-height: 1.15;
+            margin-bottom: 8px;
+        }
+        .hero h2 span { color: var(--saffron-light); }
+        .hero-tagline {
+            font-family: 'Lora', serif;
+            font-style: italic;
+            font-size: 1rem;
+            color: #7B97BE;
+            margin-bottom: 18px;
+        }
+        .hero p {
+            color: #8DAAD0;
+            font-size: 0.92rem;
+            margin-bottom: 30px;
+            max-width: 430px;
+            line-height: 1.75;
+        }
+        .hero-btns { display: flex; gap: 13px; flex-wrap: wrap; }
+        .btn-primary {
+            background: var(--saffron);
+            color: white;
+            border: none;
+            padding: 12px 26px;
+            font-family: 'Hind', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 600;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.2s;
+        }
+        .btn-primary:hover {
+            background: #B83808;
+            transform: translateY(-1px);
+            box-shadow: 0 5px 18px rgba(212,71,10,0.38);
+        }
+        .btn-outline {
+            background: transparent;
+            color: white;
+            border: 1.5px solid rgba(255,255,255,0.3);
+            padding: 11px 24px;
+            font-family: 'Hind', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 500;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.2s;
+        }
+        .btn-outline:hover { border-color: white; background: rgba(255,255,255,0.07); }
+        .hero-img-wrap {
+            position: relative;
+        }
+        .hero-img-frame {
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 22px 60px rgba(0,0,0,0.45);
+            border: 2px solid rgba(212,71,10,0.28);
+        }
+        .hero-img-frame img {
+            width: 100%;
+            height: 390px;
+            object-fit: cover;
+            display: block;
+        }
+        .hero-float {
+            position: absolute;
+            bottom: 22px;
+            left: -18px;
+            background: white;
+            border-radius: 8px;
+            padding: 11px 15px;
+            box-shadow: 0 8px 28px rgba(0,0,0,0.22);
+            display: flex;
+            align-items: center;
+            gap: 11px;
+        }
+        .float-icon {
+            width: 36px;
+            height: 36px;
+            background: var(--saffron);
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 0.9rem;
+            flex-shrink: 0;
+        }
+        .float-text h4 { font-size: 0.8rem; color: var(--text-dark); font-weight: 700; }
+        .float-text p { font-size: 0.7rem; color: var(--text-muted); margin: 0; }
 
-    /* ── SKILLS ── */
-    #skills { background: var(--surface); }
-    .skills-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 1.2rem; }
-    .skill-card {
-      background: var(--card); border: 1px solid var(--border);
-      border-radius: 1rem; padding: 1.5rem 1.6rem;
-      transition: border-color .25s, transform .25s;
-    }
-    .skill-card:hover { border-color: rgba(200,245,66,.35); transform: translateY(-3px); }
-    .skill-icon { font-size: 1.8rem; margin-bottom: .8rem; }
-    .skill-name { font-weight: 500; margin-bottom: .4rem; }
-    .skill-desc { font-size: .85rem; color: var(--muted); line-height: 1.7; }
-    .skill-bar { height: 3px; background: var(--border); border-radius: 2px; margin-top: 1rem; }
-    .skill-bar-fill { height: 100%; background: var(--accent); border-radius: 2px; }
+        /* ========= STATS STRIP ========= */
+        .stats-strip {
+            background: white;
+            border-bottom: 1px solid var(--border);
+        }
+        .stats-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+        }
+        .stat-item {
+            padding: 20px 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 13px;
+            border-right: 1px solid var(--border);
+        }
+        .stat-item:last-child { border-right: none; }
+        .stat-icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, #FEF0E5, #FDD9B5);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--saffron);
+            font-size: 1rem;
+            flex-shrink: 0;
+        }
+        .stat-text h3 { font-size: 1.25rem; font-weight: 700; color: var(--navy); line-height: 1; }
+        .stat-text p { font-size: 0.74rem; color: var(--text-muted); margin-top: 2px; }
 
-    /* ── PROJECTS ── */
-    #projects {}
-    .projects-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 1.5rem; }
-    .project-card {
-      background: var(--surface); border: 1px solid var(--border);
-      border-radius: 1.2rem; overflow: hidden;
-      transition: border-color .25s, transform .3s;
-    }
-    .project-card:hover { border-color: rgba(200,245,66,.3); transform: translateY(-4px); }
-    .project-thumb {
-      height: 200px; position: relative; overflow: hidden;
-    }
-    .project-thumb svg { width: 100%; height: 100%; }
-    .project-tag {
-      position: absolute; top: 1rem; left: 1rem;
-      background: rgba(13,13,13,.8); backdrop-filter: blur(8px);
-      color: var(--accent); font-size: .72rem; letter-spacing: .1em;
-      text-transform: uppercase; padding: .3rem .75rem; border-radius: 2rem;
-      border: 1px solid rgba(200,245,66,.2);
-    }
-    .project-body { padding: 1.5rem; }
-    .project-title { font-weight: 500; font-size: 1.05rem; margin-bottom: .5rem; }
-    .project-desc { font-size: .87rem; color: var(--muted); line-height: 1.7; margin-bottom: 1.2rem; }
-    .project-links { display: flex; gap: .8rem; }
-    .project-link {
-      font-size: .8rem; color: var(--muted); text-decoration: none;
-      display: flex; align-items: center; gap: .3rem;
-      transition: color .2s;
-    }
-    .project-link:hover { color: var(--accent); }
+        /* ========= GENERIC SECTION WRAPPER ========= */
+        .sec {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 58px 24px;
+        }
+        .sec-head { margin-bottom: 34px; }
+        .sec-label {
+            font-size: 0.71rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--saffron);
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+        .sec-head h2 {
+            font-family: 'Yatra One', cursive;
+            font-size: 1.95rem;
+            color: var(--navy);
+            line-height: 1.2;
+        }
+        .sec-head p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin-top: 7px;
+        }
+        .sec-head-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+        }
+        .view-all {
+            color: var(--saffron);
+            text-decoration: none;
+            font-size: 0.83rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            white-space: nowrap;
+        }
+        .view-all:hover { color: #B83808; }
 
-    /* ── EXPERIENCE ── */
-    #experience { background: var(--surface); }
-    .timeline { position: relative; padding-left: 2rem; }
-    .timeline::before {
-      content: ''; position: absolute; left: 0; top: .5rem; bottom: .5rem;
-      width: 1px; background: var(--border);
-    }
-    .timeline-item { position: relative; margin-bottom: 3rem; }
-    .timeline-item::before {
-      content: ''; position: absolute; left: -2.35rem; top: .45rem;
-      width: 10px; height: 10px; background: var(--accent); border-radius: 50%;
-      box-shadow: 0 0 0 3px rgba(200,245,66,.15);
-    }
-    .tl-period { font-size: .75rem; color: var(--accent); letter-spacing: .1em; text-transform: uppercase; margin-bottom: .4rem; }
-    .tl-role { font-weight: 500; font-size: 1.05rem; margin-bottom: .25rem; }
-    .tl-company { color: var(--muted); font-size: .9rem; margin-bottom: .7rem; }
-    .tl-desc { font-size: .88rem; color: var(--muted); line-height: 1.8; max-width: 560px; }
+        /* ========= CATEGORIES ========= */
+        .cats-grid {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 15px;
+        }
+        .cat-card {
+            text-decoration: none;
+            text-align: center;
+        }
+        .cat-img {
+            border-radius: 10px;
+            overflow: hidden;
+            margin-bottom: 9px;
+            background: var(--border);
+            position: relative;
+        }
+        .cat-img::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(26,58,107,0.6) 0%, transparent 55%);
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        .cat-card:hover .cat-img::after { opacity: 1; }
+        .cat-img img {
+            width: 100%;
+            aspect-ratio: 3/4;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.38s ease;
+        }
+        .cat-card:hover .cat-img img { transform: scale(1.06); }
+        .cat-card h3 { font-size: 0.83rem; font-weight: 600; color: var(--navy); margin-bottom: 1px; }
+        .cat-card p { font-size: 0.7rem; color: var(--text-muted); }
 
-    /* ── CONTACT ── */
-    #contact { text-align: center; }
-    .contact-links { display: flex; justify-content: center; gap: 1.2rem; flex-wrap: wrap; margin-top: 2rem; }
-    .contact-pill {
-      display: inline-flex; align-items: center; gap: .6rem;
-      background: var(--surface); border: 1px solid var(--border);
-      color: var(--text); text-decoration: none;
-      padding: .75rem 1.5rem; border-radius: 3rem; font-size: .9rem;
-      transition: all .25s;
-    }
-    .contact-pill:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-2px); }
-    .contact-icon { font-size: 1.1rem; }
+        /* ========= PRODUCTS SECTION ========= */
+        .products-bg { background: white; padding: 10px 0 60px; }
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            margin-top: 28px;
+        }
+        .pcard {
+            background: var(--cream);
+            border-radius: 10px;
+            overflow: hidden;
+            border: 1px solid var(--border);
+            transition: all 0.28s;
+        }
+        .pcard:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 14px 40px rgba(0,0,0,0.09);
+            border-color: transparent;
+        }
+        .pcard-img {
+            position: relative;
+            overflow: hidden;
+            background: #EDE6DB;
+        }
+        .pcard-img img {
+            width: 100%;
+            height: 255px;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.38s;
+        }
+        .pcard:hover .pcard-img img { transform: scale(1.05); }
+        .pbadge {
+            position: absolute;
+            top: 11px;
+            left: 11px;
+            background: var(--saffron);
+            color: white;
+            font-size: 0.67rem;
+            font-weight: 700;
+            padding: 3px 8px;
+            border-radius: 3px;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+        .pbadge.new     { background: var(--green); }
+        .pbadge.best    { background: var(--navy); }
+        .pbadge.prem    { background: #7C3AED; }
+        .pbadge.hot     { background: #DC2626; }
+        .pwish {
+            position: absolute;
+            top: 11px;
+            right: 11px;
+            width: 30px;
+            height: 30px;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+            opacity: 0;
+            transition: opacity 0.2s;
+            border: none;
+        }
+        .pcard:hover .pwish { opacity: 1; }
+        .pwish i { color: #9B8E80; font-size: 0.82rem; }
+        .pwish:hover i { color: #E53E3E; }
+        .pinfo { padding: 13px 15px 15px; }
+        .pmeta { font-size: 0.7rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.4px; margin-bottom: 4px; }
+        .pname { font-size: 0.87rem; font-weight: 600; color: var(--text-dark); line-height: 1.3; margin-bottom: 7px; }
+        .prating { display: flex; align-items: center; gap: 5px; margin-bottom: 10px; }
+        .stars { color: #F59E0B; font-size: 0.7rem; }
+        .rcount { font-size: 0.7rem; color: var(--text-muted); }
+        .prow { display: flex; align-items: center; justify-content: space-between; }
+        .pprice { display: flex; align-items: baseline; gap: 6px; }
+        .pcurr { font-size: 1.05rem; font-weight: 700; color: var(--navy); }
+        .porig { font-size: 0.8rem; color: var(--text-muted); text-decoration: line-through; }
+        .poff  { font-size: 0.7rem; color: var(--green); font-weight: 700; }
+        .padd {
+            background: var(--navy);
+            color: white;
+            border: none;
+            padding: 7px 13px;
+            border-radius: 5px;
+            font-family: 'Hind', sans-serif;
+            font-size: 0.76rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.2s;
+            white-space: nowrap;
+        }
+        .padd:hover { background: var(--saffron); }
 
-    /* ── FOOTER ── */
-    footer {
-      text-align: center; padding: 2rem;
-      border-top: 1px solid var(--border);
-      color: var(--muted); font-size: .82rem;
-    }
+        /* ========= ABOUT ========= */
+        .about-section { background: white; padding: 60px 0; }
+        .about-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 56px;
+            align-items: center;
+        }
+        .about-pic-wrap { position: relative; }
+        .about-pic-frame {
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 16px 50px rgba(0,0,0,0.11);
+        }
+        .about-pic-frame img {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            display: block;
+        }
+        .about-accent {
+            position: absolute;
+            bottom: -14px;
+            right: -14px;
+            width: 110px;
+            height: 110px;
+            border: 5px solid var(--saffron);
+            border-radius: 10px;
+            z-index: -1;
+            opacity: 0.35;
+        }
+        .since-badge {
+            position: absolute;
+            top: 22px;
+            left: -18px;
+            background: var(--saffron);
+            color: white;
+            border-radius: 8px;
+            padding: 14px 18px;
+            text-align: center;
+            box-shadow: 0 8px 22px rgba(212,71,10,0.35);
+            z-index: 2;
+        }
+        .since-badge h3 { font-family: 'Yatra One', cursive; font-size: 1.8rem; line-height: 1; }
+        .since-badge p { font-size: 0.7rem; opacity: 0.88; margin-top: 2px; }
+        .about-content h2 {
+            font-family: 'Yatra One', cursive;
+            font-size: 1.9rem;
+            color: var(--navy);
+            line-height: 1.22;
+            margin-bottom: 14px;
+        }
+        .about-content > p {
+            color: var(--text-muted);
+            font-size: 0.91rem;
+            margin-bottom: 14px;
+            line-height: 1.77;
+        }
+        .about-checks {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin: 22px 0 28px;
+        }
+        .acheck { display: flex; align-items: flex-start; gap: 8px; }
+        .acheck i { color: var(--saffron); font-size: 0.85rem; margin-top: 3px; flex-shrink: 0; }
+        .acheck p { font-size: 0.83rem; color: var(--text-dark); font-weight: 500; margin: 0; }
 
-    /* ── ANIMATIONS ── */
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(30px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
-    @keyframes fadeDown {
-      from { opacity: 0; transform: translateY(-20px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
-    @keyframes pulse {
-      0%, 100% { opacity: 1; } 50% { opacity: .4; }
-    }
+        /* ========= FEATURE STRIP ========= */
+        .feat-strip {
+            background: #FEF1E6;
+            border-top: 1px solid #F0D5BE;
+            border-bottom: 1px solid #F0D5BE;
+            padding: 28px 0;
+        }
+        .feat-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+        .feat-item { display: flex; align-items: center; gap: 13px; }
+        .feat-item i { font-size: 1.55rem; color: var(--saffron); flex-shrink: 0; }
+        .feat-item h4 { font-size: 0.86rem; font-weight: 700; color: var(--navy); margin-bottom: 2px; }
+        .feat-item p { font-size: 0.73rem; color: var(--text-muted); }
 
-    /* ── SCROLL REVEAL ── */
-    .reveal { opacity: 0; transform: translateY(28px); transition: opacity .65s ease, transform .65s ease; }
-    .reveal.visible { opacity: 1; transform: none; }
+        /* ========= TESTIMONIALS ========= */
+        .testi-section {
+            background: linear-gradient(135deg, #0C1D3A 0%, #152E5B 100%);
+            padding: 60px 0;
+        }
+        .testi-inner { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+        .testi-inner .sec-label { color: #FCA882; }
+        .testi-inner .sec-head h2 { color: white; }
+        .testi-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 22px;
+            margin-top: 34px;
+        }
+        .tcard {
+            background: rgba(255,255,255,0.055);
+            border: 1px solid rgba(255,255,255,0.09);
+            border-radius: 10px;
+            padding: 24px;
+        }
+        .tcard-stars { color: #F59E0B; font-size: 0.83rem; margin-bottom: 14px; }
+        .tcard-text {
+            font-family: 'Lora', serif;
+            font-style: italic;
+            color: #AAC0DC;
+            font-size: 0.86rem;
+            line-height: 1.72;
+            margin-bottom: 18px;
+        }
+        .tcard-author { display: flex; align-items: center; gap: 11px; }
+        .t-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--saffron);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 700;
+            font-size: 0.95rem;
+            flex-shrink: 0;
+        }
+        .t-info h4 { color: white; font-size: 0.86rem; font-weight: 600; }
+        .t-info p { font-size: 0.7rem; color: #4B6585; }
 
-    @media (max-width: 768px) {
-      nav { padding: 1rem 1.5rem; }
-      .nav-links { display: none; }
-      #hero { grid-template-columns: 1fr; padding: 6rem 1.5rem 3rem; text-align: center; }
-      .hero-image { display: none; }
-      .hero-desc { max-width: 100%; }
-      .hero-actions { justify-content: center; }
-      .hero-stats { justify-content: center; }
-      section { padding: 4rem 1.5rem; }
-    }
-  </style>
+        /* ========= NEWSLETTER ========= */
+        .nl-section {
+            background: white;
+            padding: 48px 24px;
+            text-align: center;
+            border-top: 1px solid var(--border);
+        }
+        .nl-inner { max-width: 540px; margin: 0 auto; }
+        .nl-inner h2 { font-family: 'Yatra One', cursive; font-size: 1.65rem; color: var(--navy); margin-bottom: 7px; }
+        .nl-inner p { color: var(--text-muted); font-size: 0.87rem; margin-bottom: 22px; }
+        .nl-form { display: flex; gap: 9px; max-width: 430px; margin: 0 auto; }
+        .nl-form input {
+            flex: 1;
+            border: 1.5px solid var(--border);
+            border-radius: 5px;
+            padding: 10px 15px;
+            font-family: 'Hind', sans-serif;
+            font-size: 0.87rem;
+            outline: none;
+            background: #FAF6F0;
+            transition: border-color 0.2s;
+        }
+        .nl-form input:focus { border-color: var(--saffron); }
+        .nl-form button {
+            background: var(--saffron);
+            color: white;
+            border: none;
+            padding: 10px 22px;
+            border-radius: 5px;
+            font-family: 'Hind', sans-serif;
+            font-size: 0.87rem;
+            font-weight: 600;
+            cursor: pointer;
+            white-space: nowrap;
+            transition: background 0.2s;
+        }
+        .nl-form button:hover { background: #B83808; }
+
+        /* ========= FOOTER ========= */
+        footer { background: var(--navy-dark); color: #64748B; }
+        .footer-top {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 48px 24px 38px;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1.3fr;
+            gap: 38px;
+        }
+        .footer-brand .logo { margin-bottom: 14px; }
+        .footer-brand .logo-text h1 { color: white; font-size: 1.25rem; }
+        .footer-brand p { font-size: 0.81rem; color: #4B6585; line-height: 1.72; margin-bottom: 18px; }
+        .footer-social { display: flex; gap: 9px; }
+        .footer-social a {
+            width: 33px;
+            height: 33px;
+            background: rgba(255,255,255,0.06);
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #64748B;
+            text-decoration: none;
+            font-size: 0.83rem;
+            transition: all 0.2s;
+        }
+        .footer-social a:hover { background: var(--saffron); color: white; }
+        .fcol h4 {
+            color: white;
+            font-size: 0.86rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 16px;
+        }
+        .fcol ul { list-style: none; }
+        .fcol ul li { margin-bottom: 8px; }
+        .fcol ul li a {
+            color: #4B6585;
+            text-decoration: none;
+            font-size: 0.8rem;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            transition: color 0.2s;
+        }
+        .fcol ul li a::before { content: '›'; color: var(--saffron); font-size: 1rem; line-height: 1; }
+        .fcol ul li a:hover { color: #94A3B8; }
+        .fcontact { display: flex; align-items: flex-start; gap: 9px; margin-bottom: 11px; }
+        .fcontact i { color: var(--saffron); font-size: 0.82rem; margin-top: 3px; flex-shrink: 0; }
+        .fcontact span { font-size: 0.79rem; color: #4B6585; line-height: 1.5; }
+        .footer-bottom {
+            background: rgba(0,0,0,0.22);
+            border-top: 1px solid rgba(255,255,255,0.05);
+        }
+        .footer-bottom-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 14px 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .footer-bottom p { font-size: 0.74rem; color: #3D5068; }
+        .footer-bottom p a { color: #4B6585; text-decoration: none; }
+        .footer-bottom p a:hover { color: #94A3B8; }
+        .f-badges { display: flex; gap: 7px; }
+        .f-badge {
+            background: rgba(255,255,255,0.04);
+            border: 1px solid rgba(255,255,255,0.07);
+            border-radius: 4px;
+            padding: 3px 9px;
+            font-size: 0.67rem;
+            color: #3D5068;
+        }
+
+        /* ========= ANIMATIONS ========= */
+        .fadein {
+            opacity: 0;
+            transform: translateY(18px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+        .fadein.visible { opacity: 1; transform: translateY(0); }
+
+        /* ========= RESPONSIVE ========= */
+        @media (max-width: 960px) {
+            .cats-grid { grid-template-columns: repeat(3, 1fr); }
+            .products-grid { grid-template-columns: repeat(2, 1fr); }
+            .hero-inner { grid-template-columns: 1fr; }
+            .hero-img-wrap { display: none; }
+            .stats-inner { grid-template-columns: repeat(2, 1fr); }
+            .about-inner { grid-template-columns: 1fr; }
+            .feat-inner { grid-template-columns: repeat(2, 1fr); }
+            .footer-top { grid-template-columns: 1fr 1fr; }
+            .testi-grid { grid-template-columns: 1fr; }
+        }
+        @media (max-width: 600px) {
+            .cats-grid { grid-template-columns: repeat(2, 1fr); }
+            .products-grid { grid-template-columns: 1fr; }
+            .header-main { grid-template-columns: auto auto; }
+            .search-wrap { display: none; }
+            .hero h2 { font-size: 2rem; }
+            .footer-top { grid-template-columns: 1fr; }
+            .feat-inner { grid-template-columns: 1fr; }
+        }
+    </style>
 </head>
 <body>
 
-<!-- NAV -->
-<nav>
-  <div class="nav-logo">Alex Morgan</div>
-  <ul class="nav-links">
-    <li><a href="#skills">Skills</a></li>
-    <li><a href="#projects">Projects</a></li>
-    <li><a href="#experience">Experience</a></li>
-    <li><a href="#contact">Contact</a></li>
-  </ul>
-  <a href="#contact" class="btn btn-primary" style="padding:.6rem 1.4rem;font-size:.83rem;">Hire Me</a>
-</nav>
-
-<!-- HERO -->
-<section id="hero">
-  <div class="hero-bg-circle"></div>
-  <div class="hero-text">
-    <div class="hero-tag"><span></span> Available for Freelance</div>
-    <h1 class="hero-name">Product <em>Designer</em> &amp; Developer</h1>
-    <p class="hero-desc">Hi, I'm Alex. I craft delightful digital experiences at the intersection of design and code — turning complex ideas into clean, usable products.</p>
-    <div class="hero-actions">
-      <a href="#projects" class="btn btn-primary">View My Work ↓</a>
-      <a href="#contact" class="btn btn-outline">Get In Touch</a>
-    </div>
-    <div class="hero-stats">
-      <div class="stat"><div class="stat-num">6+</div><div class="stat-label">Years Exp.</div></div>
-      <div class="stat"><div class="stat-num">42</div><div class="stat-label">Projects Done</div></div>
-      <div class="stat"><div class="stat-num">18</div><div class="stat-label">Happy Clients</div></div>
-    </div>
-  </div>
-  <div class="hero-image">
-    <div class="avatar-wrap">
-      <!-- Illustrative placeholder avatar -->
-      <div class="avatar-frame">
-        <svg viewBox="0 0 360 420" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <rect width="360" height="420" fill="#161616"/>
-          <!-- bg gradient -->
-          <radialGradient id="ag" cx="50%" cy="40%" r="50%">
-            <stop offset="0%" stop-color="#c8f542" stop-opacity="0.08"/>
-            <stop offset="100%" stop-color="#161616" stop-opacity="0"/>
-          </radialGradient>
-          <rect width="360" height="420" fill="url(#ag)"/>
-          <!-- body -->
-          <ellipse cx="180" cy="360" rx="100" ry="60" fill="#1d1d1d"/>
-          <!-- neck -->
-          <rect x="157" y="255" width="46" height="70" rx="8" fill="#c4a882"/>
-          <!-- head -->
-          <ellipse cx="180" cy="230" rx="68" ry="80" fill="#c4a882"/>
-          <!-- hair -->
-          <ellipse cx="180" cy="160" rx="70" ry="50" fill="#3a2a1a"/>
-          <rect x="110" y="150" width="30" height="90" rx="15" fill="#3a2a1a"/>
-          <rect x="220" y="150" width="30" height="90" rx="15" fill="#3a2a1a"/>
-          <!-- eyes -->
-          <ellipse cx="157" cy="230" rx="10" ry="11" fill="white"/>
-          <ellipse cx="203" cy="230" rx="10" ry="11" fill="white"/>
-          <circle cx="159" cy="232" r="6" fill="#2a1a0a"/>
-          <circle cx="205" cy="232" r="6" fill="#2a1a0a"/>
-          <circle cx="161" cy="230" r="2" fill="white"/>
-          <circle cx="207" cy="230" r="2" fill="white"/>
-          <!-- smile -->
-          <path d="M163 258 Q180 272 197 258" stroke="#8a5a3a" stroke-width="2.5" fill="none" stroke-linecap="round"/>
-          <!-- shirt -->
-          <path d="M90 340 Q80 310 100 295 L130 325 L180 310 L230 325 L260 295 Q280 310 270 340 Z" fill="#c8f542"/>
-          <!-- collar -->
-          <path d="M155 295 L180 320 L205 295" stroke="#0d0d0d" stroke-width="2" fill="none"/>
-        </svg>
-      </div>
-      <div class="avatar-badge">
-        <span class="badge-icon">⭐</span>
-        <div>
-          <span class="badge-label">Client Rating</span>
-          <span class="badge-val">4.9 / 5.0</span>
+<!-- ===== TOPBAR ===== -->
+<div class="topbar">
+    <div class="topbar-inner">
+        <div class="topbar-left">
+            <span>GST Reg: 08ABCDE1234F1ZX</span>
+            <span style="color:#2A4A6B; margin: 0 4px">|</span>
+            <span>Established 1987, Jaipur</span>
+            <span style="color:#2A4A6B; margin: 0 4px">|</span>
+            <span>MSME Udyam Certified</span>
         </div>
-      </div>
-      <div class="avatar-badge2">
-        Remote Ready<span>Worldwide</span>
-      </div>
-    </div>
-  </div>
-</section>
-
-<hr class="divider"/>
-
-<!-- SKILLS -->
-<section id="skills">
-  <span class="section-tag reveal">What I Do</span>
-  <h2 class="section-title reveal">Skills &amp; Expertise</h2>
-  <p class="section-sub reveal">A blend of creative design thinking and engineering precision, built over 6 years of hands-on work.</p>
-  <div class="skills-grid">
-    <div class="skill-card reveal">
-      <div class="skill-icon">🎨</div>
-      <div class="skill-name">UI / UX Design</div>
-      <div class="skill-desc">Figma-first design process with deep focus on usability, visual hierarchy, and delight.</div>
-      <div class="skill-bar"><div class="skill-bar-fill" style="width:92%"></div></div>
-    </div>
-    <div class="skill-card reveal">
-      <div class="skill-icon">⚛️</div>
-      <div class="skill-name">React & Next.js</div>
-      <div class="skill-desc">Building fast, accessible, production-ready applications with modern React patterns.</div>
-      <div class="skill-bar"><div class="skill-bar-fill" style="width:88%"></div></div>
-    </div>
-    <div class="skill-card reveal">
-      <div class="skill-icon">🔧</div>
-      <div class="skill-name">Node.js & APIs</div>
-      <div class="skill-desc">REST and GraphQL APIs, serverless functions, and database architecture.</div>
-      <div class="skill-bar"><div class="skill-bar-fill" style="width:80%"></div></div>
-    </div>
-    <div class="skill-card reveal">
-      <div class="skill-icon">📱</div>
-      <div class="skill-name">Responsive Design</div>
-      <div class="skill-desc">Pixel-perfect interfaces that feel native on every device and screen size.</div>
-      <div class="skill-bar"><div class="skill-bar-fill" style="width:95%"></div></div>
-    </div>
-    <div class="skill-card reveal">
-      <div class="skill-icon">🚀</div>
-      <div class="skill-name">Performance & SEO</div>
-      <div class="skill-desc">Core Web Vitals optimisation, lighthouse audits, and search-ready markup.</div>
-      <div class="skill-bar"><div class="skill-bar-fill" style="width:78%"></div></div>
-    </div>
-    <div class="skill-card reveal">
-      <div class="skill-icon">🤝</div>
-      <div class="skill-name">Design Systems</div>
-      <div class="skill-desc">Token-based systems, component libraries, and cross-team documentation.</div>
-      <div class="skill-bar"><div class="skill-bar-fill" style="width:85%"></div></div>
-    </div>
-  </div>
-</section>
-
-<hr class="divider"/>
-
-<!-- PROJECTS -->
-<section id="projects">
-  <span class="section-tag reveal">Portfolio</span>
-  <h2 class="section-title reveal">Selected Projects</h2>
-  <p class="section-sub reveal">A handful of things I've shipped that I'm proud of.</p>
-  <div class="projects-grid">
-
-    <!-- Project 1 -->
-    <div class="project-card reveal">
-      <div class="project-thumb">
-        <svg viewBox="0 0 320 200" xmlns="http://www.w3.org/2000/svg">
-          <rect width="320" height="200" fill="#0f1f0f"/>
-          <circle cx="70" cy="80" r="55" fill="rgba(200,245,66,.08)" stroke="rgba(200,245,66,.15)" stroke-width="1"/>
-          <rect x="100" y="50" width="180" height="12" rx="3" fill="#1e2e1e"/>
-          <rect x="100" y="72" width="130" height="10" rx="3" fill="#1a2a1a"/>
-          <rect x="100" y="92" width="155" height="10" rx="3" fill="#1a2a1a"/>
-          <rect x="40" y="130" width="240" height="42" rx="8" fill="#162016"/>
-          <rect x="55" y="143" width="60" height="6" rx="2" fill="rgba(200,245,66,.4)"/>
-          <rect x="55" y="156" width="40" height="5" rx="2" fill="#2a3a2a"/>
-          <rect x="210" y="143" width="55" height="18" rx="4" fill="rgba(200,245,66,.15)" stroke="rgba(200,245,66,.25)" stroke-width="1"/>
-        </svg>
-        <span class="project-tag">SaaS</span>
-      </div>
-      <div class="project-body">
-        <div class="project-title">Verdant Analytics Dashboard</div>
-        <div class="project-desc">Real-time data viz platform for sustainability teams. Built with React, D3.js, and a Node/Postgres backend.</div>
-        <div class="project-links">
-          <a href="#" class="project-link">🔗 Live Demo</a>
-          <a href="#" class="project-link">⭐ GitHub</a>
+        <div class="topbar-right">
+            <a href="tel:18000012345"><i class="fas fa-phone-alt"></i> Helpline: 1800-001-2345</a>
+            <a href="#"><i class="fas fa-truck"></i> Track Order</a>
+            <a href="#"><i class="fas fa-user"></i> Login / Register</a>
         </div>
-      </div>
     </div>
+</div>
 
-    <!-- Project 2 -->
-    <div class="project-card reveal">
-      <div class="project-thumb">
-        <svg viewBox="0 0 320 200" xmlns="http://www.w3.org/2000/svg">
-          <rect width="320" height="200" fill="#1a0f1a"/>
-          <rect x="20" y="20" width="130" height="160" rx="10" fill="#220f22" stroke="#2e1a2e" stroke-width="1"/>
-          <rect x="170" y="20" width="130" height="75" rx="10" fill="#220f22" stroke="#2e1a2e" stroke-width="1"/>
-          <rect x="170" y="105" width="130" height="75" rx="10" fill="#220f22" stroke="#2e1a2e" stroke-width="1"/>
-          <circle cx="85" cy="80" r="28" fill="rgba(200,100,255,.08)" stroke="rgba(200,100,255,.2)" stroke-width="1.5"/>
-          <rect x="50" y="120" width="70" height="7" rx="2" fill="#3a1a3a"/>
-          <rect x="60" y="134" width="50" height="5" rx="2" fill="#2e1a2e"/>
-          <rect x="185" y="40" width="90" height="7" rx="2" fill="#3a1a3a"/>
-          <rect x="185" y="55" width="70" height="5" rx="2" fill="#2e1a2e"/>
-          <rect x="185" y="125" width="55" height="7" rx="2" fill="#3a1a3a"/>
-          <rect x="185" y="140" width="75" height="5" rx="2" fill="#2e1a2e"/>
-        </svg>
-        <span class="project-tag">Mobile App</span>
-      </div>
-      <div class="project-body">
-        <div class="project-title">Lumia — Mood Journal</div>
-        <div class="project-desc">Mental wellness app with AI-powered insights. Designed the full UI system and shipped on React Native.</div>
-        <div class="project-links">
-          <a href="#" class="project-link">🔗 Case Study</a>
-          <a href="#" class="project-link">⭐ App Store</a>
+<!-- ===== HEADER ===== -->
+<header>
+    <div class="header-main">
+        <a href="https://trilokgarments.com" class="logo">
+            <div class="logo-emblem">त</div>
+            <div class="logo-text">
+                <h1>Trilok Garments</h1>
+                <p>Quality Fabric &amp; Clothing</p>
+            </div>
+        </a>
+        <div class="search-wrap">
+            <input type="text" placeholder="Search sarees, fabrics, kurtis, sherwanis…">
+            <button><i class="fas fa-search"></i></button>
         </div>
-      </div>
-    </div>
-
-    <!-- Project 3 -->
-    <div class="project-card reveal">
-      <div class="project-thumb">
-        <svg viewBox="0 0 320 200" xmlns="http://www.w3.org/2000/svg">
-          <rect width="320" height="200" fill="#0d1a1f"/>
-          <rect x="20" y="20" width="280" height="40" rx="8" fill="#111e24" stroke="#1a2d35" stroke-width="1"/>
-          <circle cx="40" cy="40" r="8" fill="#c8f542" opacity=".7"/>
-          <rect x="58" y="34" width="80" height="6" rx="2" fill="#1a2d35"/>
-          <rect x="250" y="33" width="35" height="14" rx="4" fill="rgba(200,245,66,.15)" stroke="rgba(200,245,66,.25)" stroke-width="1"/>
-          <rect x="20" y="76" width="132" height="104" rx="8" fill="#111e24" stroke="#1a2d35" stroke-width="1"/>
-          <rect x="162" y="76" width="138" height="48" rx="8" fill="#111e24" stroke="#1a2d35" stroke-width="1"/>
-          <rect x="162" y="132" width="138" height="48" rx="8" fill="#111e24" stroke="#1a2d35" stroke-width="1"/>
-          <rect x="35" y="92" width="100" height="6" rx="2" fill="#1e3040"/>
-          <rect x="35" y="106" width="80" height="5" rx="2" fill="#162030"/>
-          <rect x="35" y="118" width="90" height="5" rx="2" fill="#162030"/>
-        </svg>
-        <span class="project-tag">Web App</span>
-      </div>
-      <div class="project-body">
-        <div class="project-title">Navix — Travel Planner</div>
-        <div class="project-desc">Collaborative itinerary builder with map integration. Led UX research and front-end architecture.</div>
-        <div class="project-links">
-          <a href="#" class="project-link">🔗 Live Site</a>
-          <a href="#" class="project-link">⭐ GitHub</a>
+        <div class="header-actions">
+            <button class="hbtn">
+                <i class="far fa-heart"></i>
+                <span>Wishlist</span>
+            </button>
+            <button class="hbtn">
+                <div class="cart-wrap">
+                    <i class="fas fa-shopping-bag"></i>
+                    <span class="cart-badge">3</span>
+                </div>
+                <span>Cart</span>
+            </button>
         </div>
-      </div>
     </div>
 
-  </div>
+    <!-- Tricolor bar -->
+    <div class="tricolor"><div></div><div></div><div></div></div>
+
+    <!-- Nav -->
+    <nav class="main-nav">
+        <ul>
+            <li><a href="#" class="active">Home</a></li>
+            <li><a href="#">Sarees</a></li>
+            <li><a href="#">Kurtis &amp; Kurtas</a></li>
+            <li><a href="#">Fabrics</a></li>
+            <li><a href="#">Lehengas</a></li>
+            <li><a href="#">Men's Ethnic</a></li>
+            <li><a href="#">School Uniforms</a></li>
+            <li><a href="#">Bulk / Wholesale</a></li>
+            <li class="hot"><a href="#">Sale ↘ Upto 40% Off</a></li>
+        </ul>
+    </nav>
+</header>
+
+<!-- ===== ANNOUNCEMENT BAR ===== -->
+<div class="announcement">
+    <div class="marquee-track">
+        <span>Free Shipping on orders above ₹999</span>
+        <span>New Banarasi Silk Collection — Now Available</span>
+        <span>Bulk orders: special rates for 50+ pieces</span>
+        <span>GST invoice provided on all orders</span>
+        <span>Pan-India delivery in 3–7 working days</span>
+        <span>Export quality fabrics — direct from manufacturer</span>
+        <span>Uniform stitching available for schools &amp; institutions</span>
+        <!-- repeat for seamless loop -->
+        <span>Free Shipping on orders above ₹999</span>
+        <span>New Banarasi Silk Collection — Now Available</span>
+        <span>Bulk orders: special rates for 50+ pieces</span>
+        <span>GST invoice provided on all orders</span>
+        <span>Pan-India delivery in 3–7 working days</span>
+        <span>Export quality fabrics — direct from manufacturer</span>
+        <span>Uniform stitching available for schools &amp; institutions</span>
+    </div>
+</div>
+
+<!-- ===== HERO ===== -->
+<section class="hero">
+    <!-- Decorative mandala SVG -->
+    <svg class="hero-deco" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg" fill="none">
+        <circle cx="200" cy="200" r="190" stroke="white" stroke-width="1"/>
+        <circle cx="200" cy="200" r="150" stroke="white" stroke-width="1"/>
+        <circle cx="200" cy="200" r="110" stroke="white" stroke-width="1"/>
+        <circle cx="200" cy="200" r="70" stroke="white" stroke-width="1"/>
+        <line x1="10" y1="200" x2="390" y2="200" stroke="white" stroke-width="0.5"/>
+        <line x1="200" y1="10" x2="200" y2="390" stroke="white" stroke-width="0.5"/>
+        <line x1="65" y1="65" x2="335" y2="335" stroke="white" stroke-width="0.5"/>
+        <line x1="335" y1="65" x2="65" y2="335" stroke="white" stroke-width="0.5"/>
+        <polygon points="200,30 230,100 310,100 248,145 270,215 200,170 130,215 152,145 90,100 170,100" stroke="white" stroke-width="0.5" fill="none"/>
+    </svg>
+
+    <div class="hero-inner">
+        <div class="hero-content fadein">
+            <div class="hero-badge"><i class="fas fa-award"></i> 37 Saal Ki Vishwasneeyata</div>
+            <h2>Authentic Indian<br><span>Fabrics &amp; Garments</span></h2>
+            <p class="hero-tagline">— Woven with tradition, made for today —</p>
+            <p>From Banarasi silks to everyday cottons, we've been dressing India since 1987. Direct from our factory in Jaipur — no middlemen, honest prices.</p>
+            <div class="hero-btns">
+                <a href="#" class="btn-primary"><i class="fas fa-store"></i> Shop Now</a>
+                <a href="#" class="btn-outline"><i class="fas fa-file-alt"></i> View Catalogue</a>
+            </div>
+        </div>
+        <div class="hero-img-wrap fadein" style="transition-delay:0.15s">
+            <div class="hero-img-frame">
+                <img src="https://images.unsplash.com/photo-1610030469983-98e550d6193c?w=700&q=80&fit=crop"
+                     alt="Indian Saree Collection"
+                     onerror="this.src='https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?w=700&q=80&fit=crop'">
+            </div>
+            <div class="hero-float">
+                <div class="float-icon"><i class="fas fa-truck"></i></div>
+                <div class="float-text">
+                    <h4>Free Delivery</h4>
+                    <p>On orders above ₹999</p>
+                </div>
+            </div>
+        </div>
+    </div>
 </section>
 
-<hr class="divider"/>
-
-<!-- EXPERIENCE -->
-<section id="experience">
-  <span class="section-tag reveal">Journey</span>
-  <h2 class="section-title reveal">Work Experience</h2>
-  <p class="section-sub reveal">The roles that shaped how I think about craft and collaboration.</p>
-  <div class="timeline">
-    <div class="timeline-item reveal">
-      <div class="tl-period">2022 — Present</div>
-      <div class="tl-role">Senior Product Designer</div>
-      <div class="tl-company">Stripe — Remote</div>
-      <div class="tl-desc">Leading design for the Stripe Dashboard's developer tools surface. Drove a redesign that reduced task completion time by 34%.</div>
+<!-- ===== STATS STRIP ===== -->
+<div class="stats-strip">
+    <div class="stats-inner">
+        <div class="stat-item">
+            <div class="stat-icon"><i class="fas fa-calendar-check"></i></div>
+            <div class="stat-text"><h3>37+</h3><p>Years in Business</p></div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-icon"><i class="fas fa-users"></i></div>
+            <div class="stat-text"><h3>85,000+</h3><p>Happy Customers</p></div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-icon"><i class="fas fa-tshirt"></i></div>
+            <div class="stat-text"><h3>1,200+</h3><p>Products Listed</p></div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-icon"><i class="fas fa-map-marked-alt"></i></div>
+            <div class="stat-text"><h3>All India</h3><p>Delivery Available</p></div>
+        </div>
     </div>
-    <div class="timeline-item reveal">
-      <div class="tl-period">2020 — 2022</div>
-      <div class="tl-role">UI Engineer</div>
-      <div class="tl-company">Figma — San Francisco, CA</div>
-      <div class="tl-desc">Built core UI components for the design system team and contributed to the multiplayer cursor feature used by millions.</div>
-    </div>
-    <div class="timeline-item reveal">
-      <div class="tl-period">2018 — 2020</div>
-      <div class="tl-role">Frontend Developer</div>
-      <div class="tl-company">Freelance</div>
-      <div class="tl-desc">Delivered 20+ projects for startups and agencies across fintech, health, and e-commerce verticals.</div>
-    </div>
-    <div class="timeline-item reveal">
-      <div class="tl-period">2014 — 2018</div>
-      <div class="tl-role">BSc Computer Science</div>
-      <div class="tl-company">University of Toronto</div>
-      <div class="tl-desc">Graduated with honours. Specialised in HCI and visual computing. Founded the university's design club.</div>
-    </div>
-  </div>
-</section>
+</div>
 
-<hr class="divider"/>
+<!-- ===== CATEGORIES ===== -->
+<div class="sec">
+    <div class="sec-head">
+        <div class="sec-label">Browse By Category</div>
+        <h2>What Are You Looking For?</h2>
+    </div>
+    <div class="cats-grid">
+        <a href="#" class="cat-card">
+            <div class="cat-img">
+                <img src="https://images.unsplash.com/photo-1610030469983-98e550d6193c?w=240&h=320&q=80&fit=crop" alt="Sarees">
+            </div>
+            <h3>Sarees</h3><p>240+ designs</p>
+        </a>
+        <a href="#" class="cat-card">
+            <div class="cat-img">
+                <img src="https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?w=240&h=320&q=80&fit=crop" alt="Kurtis">
+            </div>
+            <h3>Kurtis &amp; Kurtas</h3><p>180+ designs</p>
+        </a>
+        <a href="#" class="cat-card">
+            <div class="cat-img">
+                <img src="https://images.unsplash.com/photo-1558769132-cb1aea458c5e?w=240&h=320&q=80&fit=crop" alt="Raw Fabrics">
+            </div>
+            <h3>Raw Fabrics</h3><p>Cotton, Silk, Linen</p>
+        </a>
+        <a href="#" class="cat-card">
+            <div class="cat-img">
+                <img src="https://images.unsplash.com/photo-1571091718767-18b5b1457add?w=240&h=320&q=80&fit=crop" alt="Lehengas">
+            </div>
+            <h3>Lehengas</h3><p>95+ designs</p>
+        </a>
+        <a href="#" class="cat-card">
+            <div class="cat-img">
+                <img src="https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?w=240&h=320&q=80&fit=crop" alt="Men's Ethnic">
+            </div>
+            <h3>Men's Ethnic</h3><p>Kurta, Sherwani</p>
+        </a>
+        <a href="#" class="cat-card">
+            <div class="cat-img">
+                <img src="https://images.unsplash.com/photo-1472851294608-062f824d29cc?w=240&h=320&q=80&fit=crop" alt="School Uniforms">
+            </div>
+            <h3>School Uniforms</h3><p>Bulk available</p>
+        </a>
+    </div>
+</div>
 
-<!-- CONTACT -->
-<section id="contact">
-  <span class="section-tag reveal">Say Hello</span>
-  <h2 class="section-title reveal">Let's Work Together</h2>
-  <p class="section-sub reveal" style="margin:0 auto 0; text-align:center;">Whether you have a project in mind, want to chat about design, or just want to say hi — my inbox is always open.</p>
-  <div class="contact-links reveal">
-    <a href="mailto:alex@example.com" class="contact-pill"><span class="contact-icon">✉️</span> alex@example.com</a>
-    <a href="#" class="contact-pill"><span class="contact-icon">💼</span> LinkedIn</a>
-    <a href="#" class="contact-pill"><span class="contact-icon">🐙</span> GitHub</a>
-    <a href="#" class="contact-pill"><span class="contact-icon">🐦</span> Twitter / X</a>
-    <a href="#" class="contact-pill"><span class="contact-icon">📄</span> Download CV</a>
-  </div>
-</section>
+<!-- ===== PRODUCTS ===== -->
+<div class="products-bg">
+    <div class="sec" style="padding-bottom: 0">
+        <div class="sec-head-row">
+            <div class="sec-head" style="margin-bottom:0">
+                <div class="sec-label">Handpicked for You</div>
+                <h2>Featured Products</h2>
+            </div>
+            <a href="#" class="view-all">View All <i class="fas fa-arrow-right"></i></a>
+        </div>
+        <div class="products-grid">
 
-<!-- FOOTER -->
+            <div class="pcard fadein">
+                <div class="pcard-img">
+                    <img src="https://images.unsplash.com/photo-1610030469983-98e550d6193c?w=400&h=520&q=80&fit=crop" alt="Banarasi Silk Saree">
+                    <span class="pbadge best">Bestseller</span>
+                    <button class="pwish"><i class="far fa-heart"></i></button>
+                </div>
+                <div class="pinfo">
+                    <div class="pmeta">Sarees · Silk</div>
+                    <div class="pname">Banarasi Silk Saree — Red &amp; Gold Zari Work</div>
+                    <div class="prating"><span class="stars">★★★★★</span><span class="rcount">(128 reviews)</span></div>
+                    <div class="prow">
+                        <div class="pprice">
+                            <span class="pcurr">₹2,499</span>
+                            <span class="porig">₹3,200</span>
+                            <span class="poff">22% off</span>
+                        </div>
+                        <button class="padd">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pcard fadein" style="transition-delay:0.07s">
+                <div class="pcard-img">
+                    <img src="https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?w=400&h=520&q=80&fit=crop" alt="Block Print Kurti">
+                    <span class="pbadge new">New</span>
+                    <button class="pwish"><i class="far fa-heart"></i></button>
+                </div>
+                <div class="pinfo">
+                    <div class="pmeta">Kurtis · Cotton</div>
+                    <div class="pname">Block Print Cotton Kurti — Indigo Blue</div>
+                    <div class="prating"><span class="stars">★★★★☆</span><span class="rcount">(64 reviews)</span></div>
+                    <div class="prow">
+                        <div class="pprice">
+                            <span class="pcurr">₹849</span>
+                            <span class="porig">₹1,100</span>
+                            <span class="poff">23% off</span>
+                        </div>
+                        <button class="padd">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pcard fadein" style="transition-delay:0.14s">
+                <div class="pcard-img">
+                    <img src="https://images.unsplash.com/photo-1558769132-cb1aea458c5e?w=400&h=520&q=80&fit=crop" alt="Raw Silk Fabric">
+                    <button class="pwish"><i class="far fa-heart"></i></button>
+                </div>
+                <div class="pinfo">
+                    <div class="pmeta">Fabrics · Raw Silk</div>
+                    <div class="pname">Pure Raw Silk Fabric — per meter (min. 5m)</div>
+                    <div class="prating"><span class="stars">★★★★★</span><span class="rcount">(212 reviews)</span></div>
+                    <div class="prow">
+                        <div class="pprice">
+                            <span class="pcurr">₹380/m</span>
+                            <span class="porig">₹480/m</span>
+                            <span class="poff">21% off</span>
+                        </div>
+                        <button class="padd">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pcard fadein" style="transition-delay:0.21s">
+                <div class="pcard-img">
+                    <img src="https://images.unsplash.com/photo-1571091718767-18b5b1457add?w=400&h=520&q=80&fit=crop" alt="Lehenga Choli">
+                    <span class="pbadge prem">Premium</span>
+                    <button class="pwish"><i class="far fa-heart"></i></button>
+                </div>
+                <div class="pinfo">
+                    <div class="pmeta">Lehengas · Bridal</div>
+                    <div class="pname">Embroidered Net Lehenga Choli — Rani Pink</div>
+                    <div class="prating"><span class="stars">★★★★★</span><span class="rcount">(47 reviews)</span></div>
+                    <div class="prow">
+                        <div class="pprice">
+                            <span class="pcurr">₹4,799</span>
+                            <span class="porig">₹7,000</span>
+                            <span class="poff">31% off</span>
+                        </div>
+                        <button class="padd">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pcard fadein">
+                <div class="pcard-img">
+                    <img src="https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?w=400&h=520&q=80&fit=crop" alt="Kurta Pajama">
+                    <span class="pbadge best">Bestseller</span>
+                    <button class="pwish"><i class="far fa-heart"></i></button>
+                </div>
+                <div class="pinfo">
+                    <div class="pmeta">Men's · Kurta Set</div>
+                    <div class="pname">Cotton Kurta Pajama Set — Festive White</div>
+                    <div class="prating"><span class="stars">★★★★☆</span><span class="rcount">(89 reviews)</span></div>
+                    <div class="prow">
+                        <div class="pprice">
+                            <span class="pcurr">₹1,249</span>
+                            <span class="porig">₹1,600</span>
+                            <span class="poff">22% off</span>
+                        </div>
+                        <button class="padd">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pcard fadein" style="transition-delay:0.07s">
+                <div class="pcard-img">
+                    <img src="https://images.unsplash.com/photo-1601662528567-526cd06f6582?w=400&h=520&q=80&fit=crop" alt="Chanderi Saree">
+                    <span class="pbadge new">New</span>
+                    <button class="pwish"><i class="far fa-heart"></i></button>
+                </div>
+                <div class="pinfo">
+                    <div class="pmeta">Sarees · Chanderi</div>
+                    <div class="pname">Chanderi Silk-Cotton Saree — Pastel Green</div>
+                    <div class="prating"><span class="stars">★★★★★</span><span class="rcount">(33 reviews)</span></div>
+                    <div class="prow">
+                        <div class="pprice">
+                            <span class="pcurr">₹1,699</span>
+                            <span class="porig">₹2,200</span>
+                            <span class="poff">23% off</span>
+                        </div>
+                        <button class="padd">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pcard fadein" style="transition-delay:0.14s">
+                <div class="pcard-img">
+                    <img src="https://images.unsplash.com/photo-1472851294608-062f824d29cc?w=400&h=520&q=80&fit=crop" alt="Lawn Cotton">
+                    <button class="pwish"><i class="far fa-heart"></i></button>
+                </div>
+                <div class="pinfo">
+                    <div class="pmeta">Fabrics · Cotton Lawn</div>
+                    <div class="pname">Premium Lawn Cotton — Solid (30+ colours)</div>
+                    <div class="prating"><span class="stars">★★★★☆</span><span class="rcount">(156 reviews)</span></div>
+                    <div class="prow">
+                        <div class="pprice">
+                            <span class="pcurr">₹170/m</span>
+                            <span class="porig">₹220/m</span>
+                            <span class="poff">23% off</span>
+                        </div>
+                        <button class="padd">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pcard fadein" style="transition-delay:0.21s">
+                <div class="pcard-img">
+                    <img src="https://images.unsplash.com/photo-1614252369475-531eba835eb1?w=400&h=520&q=80&fit=crop" alt="Embroidered Dupatta">
+                    <span class="pbadge hot">Hot</span>
+                    <button class="pwish"><i class="far fa-heart"></i></button>
+                </div>
+                <div class="pinfo">
+                    <div class="pmeta">Accessories · Dupatta</div>
+                    <div class="pname">Hand-embroidered Georgette Dupatta — Multicolour</div>
+                    <div class="prating"><span class="stars">★★★★★</span><span class="rcount">(72 reviews)</span></div>
+                    <div class="prow">
+                        <div class="pprice">
+                            <span class="pcurr">₹549</span>
+                            <span class="porig">₹799</span>
+                            <span class="poff">31% off</span>
+                        </div>
+                        <button class="padd">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<!-- ===== ABOUT ===== -->
+<div class="about-section">
+    <div class="about-inner">
+        <div class="about-pic-wrap fadein">
+            <div class="about-pic-frame">
+                <img src="https://images.unsplash.com/photo-1558769132-cb1aea458c5e?w=600&h=400&q=80&fit=crop" alt="Our Workshop">
+            </div>
+            <div class="about-accent"></div>
+            <div class="since-badge">
+                <h3>1987</h3>
+                <p>Founded</p>
+            </div>
+        </div>
+        <div class="about-content fadein" style="transition-delay:0.15s">
+            <div class="sec-label">Our Story</div>
+            <h2>Built on Trust,<br>Sewn with Care</h2>
+            <p>It all started with Shri Trilok Chand Ji — a small shop in Jaipur's old Johari Bazaar and a straightforward belief: good cloth, fair price, no nonsense. Three generations later, that hasn't changed.</p>
+            <p>We manufacture and supply fabrics and readymade garments directly from our unit here in Jaipur. No fancy showroom markup, no middlemen. You deal with us directly, and we take that responsibility seriously.</p>
+            <div class="about-checks">
+                <div class="acheck"><i class="fas fa-check-circle"></i><p>In-house manufacturing unit</p></div>
+                <div class="acheck"><i class="fas fa-check-circle"></i><p>ISO quality standards</p></div>
+                <div class="acheck"><i class="fas fa-check-circle"></i><p>Bulk &amp; wholesale orders</p></div>
+                <div class="acheck"><i class="fas fa-check-circle"></i><p>GST invoice on every order</p></div>
+                <div class="acheck"><i class="fas fa-check-circle"></i><p>Sourcing from Surat, Varanasi &amp; Jaipur</p></div>
+                <div class="acheck"><i class="fas fa-check-circle"></i><p>Export quality fabrics available</p></div>
+            </div>
+            <a href="#" class="btn-primary">Learn More About Us <i class="fas fa-arrow-right"></i></a>
+        </div>
+    </div>
+</div>
+
+<!-- ===== FEATURE STRIP ===== -->
+<div class="feat-strip">
+    <div class="feat-inner">
+        <div class="feat-item">
+            <i class="fas fa-shipping-fast"></i>
+            <div>
+                <h4>Pan-India Delivery</h4>
+                <p>Ships to all 28 states &amp; 8 UTs</p>
+            </div>
+        </div>
+        <div class="feat-item">
+            <i class="fas fa-undo"></i>
+            <div>
+                <h4>7-Day Easy Returns</h4>
+                <p>Hassle-free return policy</p>
+            </div>
+        </div>
+        <div class="feat-item">
+            <i class="fas fa-file-invoice"></i>
+            <div>
+                <h4>GST Invoice</h4>
+                <p>Proper billing on every order</p>
+            </div>
+        </div>
+        <div class="feat-item">
+            <i class="fas fa-headset"></i>
+            <div>
+                <h4>Customer Support</h4>
+                <p>Mon–Sat, 9 AM – 6 PM IST</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ===== TESTIMONIALS ===== -->
+<div class="testi-section">
+    <div class="testi-inner">
+        <div class="sec-head">
+            <div class="sec-label">Customer Feedback</div>
+            <h2>Log Kya Kehte Hain</h2>
+            <p style="color:#4B6585; margin-top:5px; font-size:0.88rem">What our customers say about us</p>
+        </div>
+        <div class="testi-grid">
+            <div class="tcard fadein">
+                <div class="tcard-stars">★★★★★</div>
+                <p class="tcard-text">"Been ordering sarees from Trilok for 6 years now. The quality is consistent and the pricing is fair compared to local market rates. Their Banarasi collection is especially good. Delivery was on time as usual."</p>
+                <div class="tcard-author">
+                    <div class="t-avatar">S</div>
+                    <div class="t-info">
+                        <h4>Sunita Agarwal</h4>
+                        <p>Jaipur, Rajasthan · Verified Buyer</p>
+                    </div>
+                </div>
+            </div>
+            <div class="tcard fadein" style="transition-delay:0.1s">
+                <div class="tcard-stars">★★★★★</div>
+                <p class="tcard-text">"Ordered 200 school uniform sets for our institution. Got very good bulk pricing, proper GST invoice, and delivery was done in batches as we requested. Will definitely reorder next academic session."</p>
+                <div class="tcard-author">
+                    <div class="t-avatar">R</div>
+                    <div class="t-info">
+                        <h4>Rajesh Kumar Sharma</h4>
+                        <p>Principal, DPS Tonk · Bulk Buyer</p>
+                    </div>
+                </div>
+            </div>
+            <div class="tcard fadein" style="transition-delay:0.2s">
+                <div class="tcard-stars">★★★★☆</div>
+                <p class="tcard-text">"Raw silk fabric quality is genuinely export grade. I run a boutique and my clients always appreciate the texture. One order got delayed by two days but they informed me in advance, which I respect."</p>
+                <div class="tcard-author">
+                    <div class="t-avatar">P</div>
+                    <div class="t-info">
+                        <h4>Priya Mehta</h4>
+                        <p>Boutique Owner, Ahmedabad · Regular Buyer</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ===== NEWSLETTER ===== -->
+<div class="nl-section">
+    <div class="nl-inner">
+        <h2>New Arrivals &amp; Special Offers</h2>
+        <p>Subscribe to hear about new collections, seasonal discounts, and bulk deal announcements — straight to your inbox. No spam, we promise.</p>
+        <div class="nl-form">
+            <input type="email" placeholder="Your email address">
+            <button>Subscribe</button>
+        </div>
+    </div>
+</div>
+
+<!-- ===== FOOTER ===== -->
 <footer>
-  <p>Designed &amp; built by Alex Morgan · 2024 · All rights reserved.</p>
+    <div class="footer-top">
+        <div class="footer-brand">
+            <a href="https://trilokgarments.com" class="logo">
+                <div class="logo-emblem">त</div>
+                <div class="logo-text">
+                    <h1>Trilok Garments</h1>
+                    <p>Quality Fabric &amp; Clothing</p>
+                </div>
+            </a>
+            <p>Direct manufacturer &amp; supplier of fabrics and garments. Serving individual buyers, boutiques, schools, and corporates across India since 1987.</p>
+            <div class="footer-social">
+                <a href="#" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" title="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="#" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                <a href="#" title="YouTube"><i class="fab fa-youtube"></i></a>
+            </div>
+        </div>
+
+        <div class="fcol">
+            <h4>Quick Links</h4>
+            <ul>
+                <li><a href="#">Sarees</a></li>
+                <li><a href="#">Kurtis &amp; Kurtas</a></li>
+                <li><a href="#">Raw Fabrics</a></li>
+                <li><a href="#">Lehengas</a></li>
+                <li><a href="#">Men's Ethnic Wear</a></li>
+                <li><a href="#">School Uniforms</a></li>
+                <li><a href="#">Sale Items</a></li>
+            </ul>
+        </div>
+
+        <div class="fcol">
+            <h4>Customer Help</h4>
+            <ul>
+                <li><a href="#">My Account</a></li>
+                <li><a href="#">Track My Order</a></li>
+                <li><a href="#">Return &amp; Refund Policy</a></li>
+                <li><a href="#">Shipping Information</a></li>
+                <li><a href="#">Bulk / Wholesale Enquiry</a></li>
+                <li><a href="#">Privacy Policy</a></li>
+                <li><a href="#">Terms &amp; Conditions</a></li>
+            </ul>
+        </div>
+
+        <div class="fcol">
+            <h4>Get In Touch</h4>
+            <div class="fcontact">
+                <i class="fas fa-map-marker-alt"></i>
+                <span>12, Johari Bazaar Road,<br>Jaipur – 302003, Rajasthan</span>
+            </div>
+            <div class="fcontact">
+                <i class="fas fa-phone-alt"></i>
+                <span>+91 98765 43210<br>Helpline: 1800-001-2345 (Toll Free)</span>
+            </div>
+            <div class="fcontact">
+                <i class="fas fa-envelope"></i>
+                <span>info@trilokgarments.com</span>
+            </div>
+            <div class="fcontact">
+                <i class="fas fa-clock"></i>
+                <span>Mon – Sat: 9:00 AM – 6:00 PM IST</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="tricolor"><div></div><div></div><div></div></div>
+
+    <div class="footer-bottom">
+        <div class="footer-bottom-inner">
+            <p>© 2024 Trilok Garments. All rights reserved. &nbsp;·&nbsp; <a href="#">Sitemap</a> &nbsp;·&nbsp; <a href="#">Privacy Policy</a></p>
+            <div class="f-badges">
+                <span class="f-badge">GST Registered</span>
+                <span class="f-badge">MSME Certified</span>
+                <span class="f-badge">Secure Payments</span>
+            </div>
+        </div>
+    </div>
 </footer>
 
 <script>
-  // Scroll reveal
-  const obs = new IntersectionObserver((entries) => {
-    entries.forEach(e => {
-      if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); }
+    // Scroll-based fade-in
+    const observer = new IntersectionObserver(entries => {
+        entries.forEach(e => {
+            if (e.isIntersecting) {
+                e.target.classList.add('visible');
+                observer.unobserve(e.target);
+            }
+        });
+    }, { threshold: 0.12 });
+
+    document.querySelectorAll('.fadein').forEach(el => observer.observe(el));
+
+    // Wishlist heart toggle
+    document.querySelectorAll('.pwish').forEach(btn => {
+        btn.addEventListener('click', function(e) {
+            e.stopPropagation();
+            const icon = this.querySelector('i');
+            const active = icon.classList.contains('fas');
+            icon.classList.toggle('far', active);
+            icon.classList.toggle('fas', !active);
+            icon.style.color = !active ? '#E53E3E' : '';
+        });
     });
-  }, { threshold: 0.12 });
-  document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+
+    // Add to cart feedback
+    document.querySelectorAll('.padd').forEach(btn => {
+        btn.addEventListener('click', function() {
+            if (this.dataset.busy) return;
+            this.dataset.busy = true;
+            const orig = this.textContent;
+            this.textContent = '✓ Added!';
+            this.style.background = '#166534';
+            setTimeout(() => {
+                this.textContent = orig;
+                this.style.background = '';
+                delete this.dataset.busy;
+            }, 1600);
+        });
+    });
+
+    // Newsletter form
+    document.querySelector('.nl-form button').addEventListener('click', function() {
+        const input = document.querySelector('.nl-form input');
+        if (!input.value || !input.value.includes('@')) {
+            input.style.borderColor = '#DC2626';
+            setTimeout(() => input.style.borderColor = '', 1200);
+            return;
+        }
+        this.textContent = '✓ Subscribed!';
+        this.style.background = '#166534';
+        input.value = '';
+        setTimeout(() => {
+            this.textContent = 'Subscribe';
+            this.style.background = '';
+        }, 2500);
+    });
 </script>
+
 </body>
 </html>
